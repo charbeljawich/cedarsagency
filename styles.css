@@ -1108,6 +1108,14 @@ footer {
     transform-style: flat;
     will-change: auto;
   }
+
+  /* iOS Safari auto-zooms the whole page in when a focused input's
+     font-size is under 16px, then snaps back out on blur. Keeping
+     form fields at 16px here stops that in/out zoom on mobile. */
+  input,
+  textarea {
+    font-size: 16px;
+  }
 }
 
 /* ============================================================
