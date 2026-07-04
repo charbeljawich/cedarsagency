@@ -41,6 +41,7 @@ html[data-theme="dark"] {
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
@@ -1081,6 +1082,31 @@ footer {
 
   .form-row {
     flex-direction: column;
+  }
+}
+
+/* ============================================================
+   Touch devices: mobile Safari/Chrome can mis-render pinch-zoom
+   (jumping/flickering) when a fixed-position blurred nav and
+   always-on 3D transform layers are on screen at the same time.
+   Simplify those specific layers for touch input so pinching in,
+   out, or panning stays smooth.
+============================================================= */
+@media (pointer: coarse) {
+  nav {
+    backdrop-filter: none;
+    background: var(--bg);
+  }
+
+  .cedar-3d {
+    animation: none;
+    transform: rotateY(0deg) rotateX(0deg);
+  }
+
+  .tier,
+  .client-card {
+    transform-style: flat;
+    will-change: auto;
   }
 }
 
